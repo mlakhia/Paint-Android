@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Paint</string>
+    <string name="menu_tools">Tools</string>
+	<string name="menu_erase">Erase</string>
+	<string name="tools_dialog_title">Configure tool</string>
+	<string name="colour_chooser_dialog_title">Choose color</string>
+	<string name="width_done">Set</string>
+
+</resources>

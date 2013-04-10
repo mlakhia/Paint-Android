@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="300dp"
+    android:orientation="vertical" >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RadioButton
+            android:id="@+id/radioRectangle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Rectangle" />
+
+        <RadioButton
+            android:id="@+id/radioEllipse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ellipse" />
+
+        <RadioButton
+            android:id="@+id/radioLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Line" />
+
+                <RadioButton
+            android:id="@+id/radioPath"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Path" />
+        
+                
+        <RadioButton
+            android:id="@+id/radioCurve"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Curve" />
+
+    </RadioGroup>
+
+    	<ImageView android:id="@+id/widthImageView"
+		android:layout_width="match_parent" android:layout_height="match_parent"
+		android:layout_margin="10dp" />
+    	
+    </LinearLayout>
+
+	<TableLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:stretchColumns="1" >
+
+		<TableRow
+		    android:id="@+id/tableRow3"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content" >
+
+			<TextView
+			    android:id="@+id/textView1"
+			   android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="right" android:layout_gravity="center_vertical"
+			    android:text="Width" />
+
+			<SeekBar
+			    android:id="@+id/widthSeekBar"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_margin="20dp"
+			    android:max="50"
+			    android:paddingLeft="15dp"
+			    android:paddingRight="15dp" />
+
+		</TableRow>
+
+		<TableRow android:id="@+id/tableRow1" android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+
+			<TextView
+			    android:id="@+id/textView2"
+			    android:layout_width="wrap_content"
+				android:layout_height="wrap_content" 
+				android:gravity="right" android:layout_gravity="center_vertical"
+			    android:text="Stroke/FG" />
+
+			<ImageButton
+			    android:id="@+id/btnFG"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    
+			    android:paddingLeft="15dp"
+			    android:paddingRight="15dp" />
+
+		</TableRow>
+
+		<TableRow android:id="@+id/tableRow2" android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+
+			<TextView
+			    android:id="@+id/textView3"
+			    android:layout_width="wrap_content"
+				android:layout_height="wrap_content" 
+				android:gravity="right" android:layout_gravity="center_vertical"
+			    android:text="Fill/BG" />
+			
+			<ImageButton
+			    android:id="@+id/btnBG"
+			    android:layout_width="match_parent"
+			    android:layout_height="fill_parent"
+			   
+			    android:paddingLeft="15dp"
+			    android:paddingRight="15dp" />
+
+		</TableRow>
+
+	</TableLayout>
+
+	<Button
+	    android:id="@+id/widthDone"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_horizontal"
+	    android:text="Done" />
+
+</LinearLayout>

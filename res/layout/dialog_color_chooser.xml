@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent" android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<ImageView android:id="@+id/colourImageView"
+		android:layout_width="match_parent" android:layout_height="50dp"
+		android:layout_margin="10dp" />
+
+	<TableLayout android:layout_width="match_parent"
+		android:layout_height="wrap_content" android:layout_margin="10dp"
+		android:stretchColumns="1">
+
+		<TableRow android:id="@+id/tableRow2" android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<TextView android:id="@+id/textView1" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:text="Red"
+				android:gravity="right" android:layout_gravity="center_vertical" />
+
+			<SeekBar android:id="@+id/redSeekBar" android:layout_width="match_parent"
+				android:layout_height="wrap_content" android:max="255"
+				android:paddingLeft="20dp" android:paddingRight="20dp" />
+
+		</TableRow>
+
+		<TableRow android:id="@+id/tableRow3" android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<TextView android:id="@+id/textView1" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:text="Green"
+				android:gravity="right" android:layout_gravity="center_vertical" />
+
+			<SeekBar android:id="@+id/greenSeekBar" android:layout_width="match_parent"
+				android:layout_height="wrap_content" android:max="255"
+				android:paddingLeft="20dp" android:paddingRight="20dp" />
+
+		</TableRow>
+
+		<TableRow android:id="@+id/tableRow4" android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<TextView android:id="@+id/textView1" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:text="Blue"
+				android:gravity="right" android:layout_gravity="center_vertical" />
+
+			<SeekBar android:id="@+id/blueSeekBar" android:layout_width="match_parent"
+				android:layout_height="wrap_content" android:max="255"
+				android:paddingLeft="20dp" android:paddingRight="20dp" />
+
+		</TableRow>
+
+		<TableRow android:id="@+id/tableRow5" android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<TextView android:id="@+id/textView1" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:text="Alpha"
+				android:gravity="right" android:layout_gravity="center_vertical" />
+
+			<SeekBar android:id="@+id/alphaSeekBar" android:layout_width="match_parent"
+				android:layout_height="wrap_content" android:max="255"
+				android:paddingLeft="20dp" android:paddingRight="20dp" />
+
+		</TableRow>
+
+
+	</TableLayout>
+
+	<Button android:id="@+id/colourDone" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:text="Done"
+		android:layout_gravity="center_horizontal" />
+
+
+</LinearLayout>
