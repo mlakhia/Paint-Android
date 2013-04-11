@@ -19,7 +19,6 @@ public class EllipseTool extends RectangleBaseTool {
 	
 	@Override
 	public void drawPreview(Canvas canvas) {
-		toolbox.getDrawingView().erase();
 		canvas.drawOval(new RectF(x1,y1,x2,y2), toolbox.getPreviewPaint());
 	}
 
@@ -27,7 +26,6 @@ public class EllipseTool extends RectangleBaseTool {
 	public void addToDrawing() {
 		Ellipse ellipse = new Ellipse(x1, y1, x2, y2, toolbox.getStrokeColor(), toolbox.getStrokeWidth(), toolbox.getFillColor());
 		toolbox.getDrawingView().getShapes().add(ellipse);
-		toolbox.getDrawingView().erase();
 	}
 
 }

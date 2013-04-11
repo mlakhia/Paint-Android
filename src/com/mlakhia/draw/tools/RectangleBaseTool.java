@@ -17,7 +17,6 @@ public abstract class RectangleBaseTool extends Tool {
 
 	@Override
 	public void touchStart(MotionEvent event) {
-		event.getAction();
 		x1 = event.getX();
 		y1 = event.getY();
 		
@@ -26,17 +25,17 @@ public abstract class RectangleBaseTool extends Tool {
 
 	@Override
 	public void touchEnd(MotionEvent event) {
-		event.getAction();
 		x2 = event.getX();
 		y2 = event.getY();
 
 		hasPreview = false;
 		addToDrawing();
+
+		toolbox.getDrawingView().erase();
 	}
 
 	@Override
 	public void touchMove(MotionEvent event) {
-		event.getAction();
 		x2 = event.getX();
 		y2 = event.getY();
 		

@@ -148,6 +148,7 @@ public class ToolSettingsDialog extends Dialog {
 		Bitmap bitmap = Bitmap.createBitmap(400, 400, Bitmap.Config.ARGB_4444);
 		exampleCanvas = new Canvas(bitmap);		
 		
+		// FIXME needs to draw
 		toolbox.getCurrentTool().examplePreview(exampleCanvas);
 
 		ImageView image = (ImageView)findViewById(R.id.widthImageView);

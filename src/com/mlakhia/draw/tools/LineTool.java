@@ -18,7 +18,6 @@ public class LineTool extends RectangleBaseTool {
 
 	@Override
 	public void drawPreview(Canvas canvas) {
-		toolbox.getDrawingView().erase();
 		canvas.drawLine(x1, y1, x2, y2, toolbox.getPreviewPaint());
 	}
 
@@ -26,7 +25,6 @@ public class LineTool extends RectangleBaseTool {
 	public void addToDrawing() {
 		Line line = new Line(x1, y1, x2, y2, toolbox.getStrokeColor(), toolbox.getStrokeWidth());
 		toolbox.getDrawingView().getShapes().add(line);
-		toolbox.getDrawingView().erase();
 	}
 
 }

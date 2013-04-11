@@ -18,7 +18,6 @@ public class RectangleTool extends RectangleBaseTool {
 	
 	@Override
 	public void drawPreview(Canvas canvas) {
-		toolbox.getDrawingView().erase();
 		canvas.drawRect(x1, y1, x2, y2, toolbox.getPreviewPaint());
 	}
 
@@ -26,7 +25,6 @@ public class RectangleTool extends RectangleBaseTool {
 	public void addToDrawing() {
 		Rectangle rect = new Rectangle(x1, y1, x2, y2, toolbox.getStrokeColor(), toolbox.getStrokeWidth(), toolbox.getFillColor());
 		toolbox.getDrawingView().getShapes().add(rect);
-		toolbox.getDrawingView().erase();
 	}
 	
 }
