@@ -35,12 +35,12 @@ public class DrawingView extends View {
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 		
-		for (Shape s : shapes)
-			s.draw(paint, canvas);
-		
 		if(toolbox.getCurrentTool().hasPreview()){
 			toolbox.getCurrentTool().drawPreview(canvas);
 		}
+		
+		for (Shape s : shapes)
+			s.draw(paint, canvas);
 	}
 
 	@Override

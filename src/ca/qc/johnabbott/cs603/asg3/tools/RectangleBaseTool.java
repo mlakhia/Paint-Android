@@ -10,13 +10,14 @@ import ca.qc.johnabbott.cs603.asg3.shapes.Rectangle;
 
 public abstract class RectangleBaseTool extends Tool {
 
-	protected float x1 = 0;
-	protected float x2 = 0;
-	protected float y1 = 0;
-	protected float y2 = 0;
+	protected float x1, y1, x2, y2;
 
 	public RectangleBaseTool(ToolBox toolbox, ToolName name) {
 		super(toolbox, name);
+		x1 = 0;
+		x2 = 0;
+		y1 = 0;
+		y2 = 0;
 	}
 
 	@Override
@@ -46,27 +47,11 @@ public abstract class RectangleBaseTool extends Tool {
 		
 		toolbox.getDrawingView().erase();
 	}
-
-	@Override
-	public void drawPreview(Canvas canvas) {
-		toolbox.getDrawingView().erase();
-		canvas.drawRect(x1, y1, x2, y2, toolbox.getPreviewPaint());
-
-		//canvas.drawLine(x1, y1, x2, y2, toolbox.getPreviewPaint());
-	}
-
-	@Override
-	public void addToDrawing() {
-		/*
-		 * Log.d("x1",""+x1); Log.d("y1",""+y1); Log.d("x2",""+x2);
-		 * Log.d("y2",""+y2); Log.d("color",""+toolbox.getStrokeColor());
-		 * Log.d("width",""+toolbox.getStrokeWidth());
-		 * Log.d("fill",""+toolbox.getFillColor());
-		 */
-
-		Rectangle rect = new Rectangle(x1, y1, x2, y2, toolbox.getStrokeColor(), toolbox.getStrokeWidth(), toolbox.getFillColor());
-		toolbox.getDrawingView().getShapes().add(rect);
-		toolbox.getDrawingView().erase();
-	}
-
+	
+	/*
+	 * Log.d("x1",""+x1); Log.d("y1",""+y1); Log.d("x2",""+x2);
+	 * Log.d("y2",""+y2); Log.d("color",""+toolbox.getStrokeColor());
+	 * Log.d("width",""+toolbox.getStrokeWidth());
+	 * Log.d("fill",""+toolbox.getFillColor());
+	 */
 }

@@ -22,7 +22,6 @@ public class Ellipse extends Shape {
 		this.ry = ry;
 	}
 
-
 	@Override
 	public void draw(Paint paint, Canvas canvas) {
 		
@@ -32,13 +31,13 @@ public class Ellipse extends Shape {
 		if(fillColor != Color.TRANSPARENT) {
 			paint.setColor(fillColor);
 			paint.setStyle(Style.FILL);
-			canvas.drawOval(new RectF(cx-rx, cy-ry, cx+rx, cy+ry), paint);
+			canvas.drawOval(new RectF(cx,cy,rx,ry), paint);
 		}
 		if(strokeColor != Color.TRANSPARENT && strokeWidth > 0) {
 			paint.setStyle(Style.STROKE);
 			paint.setColor(strokeColor);
 			paint.setStrokeWidth(strokeWidth);
-			canvas.drawOval(new RectF(cx-rx, cy-ry, cx+rx, cy+ry), paint);
+			canvas.drawOval(new RectF(cx,cy,rx,ry), paint);
 		}
 		
 	}
