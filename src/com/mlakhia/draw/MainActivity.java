@@ -1,6 +1,6 @@
-package ca.qc.johnabbott.cs603.asg3;
+package com.mlakhia.draw;
 
-import ca.qc.johnabbott.cs603.R;
+import com.mlakhia.draw.R;
 
 import android.os.Bundle;
 import android.app.Activity;

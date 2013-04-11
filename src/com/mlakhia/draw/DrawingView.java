@@ -1,13 +1,11 @@
-package ca.qc.johnabbott.cs603.asg3;
+package com.mlakhia.draw;
 
 import java.util.ArrayList;
 
-import ca.qc.johnabbott.cs603.asg3.shapes.Rectangle;
-import ca.qc.johnabbott.cs603.asg3.shapes.Shape;
-import ca.qc.johnabbott.cs603.asg3.tools.ToolName;
+import com.mlakhia.draw.shapes.Shape;
+
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -27,8 +25,6 @@ public class DrawingView extends View {
 		toolbox = new ToolBox(this);
 		
 		shapes = new ArrayList<Shape>();
-		
-		//shapes.add(new Rectangle(100, 100, 400, 400, Color.MAGENTA, 1, Color.CYAN));
 	}
 
 	@Override

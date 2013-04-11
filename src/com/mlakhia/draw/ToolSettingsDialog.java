@@ -1,17 +1,12 @@
-package ca.qc.johnabbott.cs603.asg3;
+package com.mlakhia.draw;
 
-import ca.qc.johnabbott.cs603.R;
+import com.mlakhia.draw.tools.ToolName;
 
-import ca.qc.johnabbott.cs603.asg3.shapes.Ellipse;
-import ca.qc.johnabbott.cs603.asg3.shapes.Line;/*
-import ca.qc.johnabbott.cs603.asg3.shapes.Bezier;
-import ca.qc.johnabbott.cs603.asg3.shapes.PolyGon;
-import ca.qc.johnabbott.cs603.asg3.shapes.PolyLine;*/
-import ca.qc.johnabbott.cs603.asg3.shapes.Rectangle;
-import ca.qc.johnabbott.cs603.asg3.shapes.Shape;
-import ca.qc.johnabbott.cs603.asg3.tools.LineTool;
-import ca.qc.johnabbott.cs603.asg3.tools.Tool;
-import ca.qc.johnabbott.cs603.asg3.tools.ToolName;
+import com.mlakhia.draw.R;
+/*
+import com.mlakhia.draw.shapes.Bezier;
+import com.mlakhia.draw.shapes.PolyGon;
+import com.mlakhia.draw.shapes.PolyLine;*/
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -30,6 +25,7 @@ public class ToolSettingsDialog extends Dialog {
 
 	private ToolBox toolbox;
 	private Paint previewPaint;
+	public Canvas exampleCanvas;
 	
 	/* Interface elements */
 	private RadioButton radioRectangle;
@@ -52,6 +48,8 @@ public class ToolSettingsDialog extends Dialog {
 		this.previewPaint = new Paint();
 		this.previewPaint.setAntiAlias(true);
 		this.previewPaint.setStrokeCap(Paint.Cap.ROUND);
+
+		this.exampleCanvas = new Canvas();
 		
 		radioRectangle = (RadioButton) findViewById(R.id.radioRectangle);
 		radioRectangle.setOnClickListener(new ToolClick(ToolName.RECTANGLE));
@@ -146,22 +144,14 @@ public class ToolSettingsDialog extends Dialog {
 		this.show();
 	}
 
-	private void updatePreview() {		
-		//previewPaint = toolbox.getPreviewPaint();
-		//toolbox.getCurrentTool().drawPreview(canvas);
+	private void updatePreview() {
+		Bitmap bitmap = Bitmap.createBitmap(400, 400, Bitmap.Config.ARGB_4444);
+		exampleCanvas = new Canvas(bitmap);		
+		
+		toolbox.getCurrentTool().examplePreview(exampleCanvas);
 
-		// white background
-		Bitmap bitmap = Bitmap.createBitmap(400, 400, Bitmap.Config.ARGB_8888);
-		bitmap.eraseColor(Color.LTGRAY);
-				
-		Canvas canvas = new Canvas();
-		canvas.setBitmap(bitmap);
-		
-		
-		
-		// Write Canvas to Screen (element in dialog)
 		ImageView image = (ImageView)findViewById(R.id.widthImageView);
-		image.draw(canvas);
+		image.draw(exampleCanvas);
 	}
 	
 	private class ToolClick implements View.OnClickListener {

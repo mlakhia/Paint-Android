@@ -1,3 +1,3 @@
-package ca.qc.johnabbott.cs603.asg3.tools;
+package com.mlakhia.draw.tools;
 
 public enum ToolName { NONE, LINE, RECTANGLE, ELLIPSE, PATH, CURVE }

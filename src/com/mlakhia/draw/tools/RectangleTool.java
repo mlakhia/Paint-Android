@@ -1,13 +1,19 @@
-package ca.qc.johnabbott.cs603.asg3.tools;
+package com.mlakhia.draw.tools;
+
+import com.mlakhia.draw.ToolBox;
+import com.mlakhia.draw.shapes.Rectangle;
 
 import android.graphics.Canvas;
-import ca.qc.johnabbott.cs603.asg3.ToolBox;
-import ca.qc.johnabbott.cs603.asg3.shapes.Rectangle;
 
 public class RectangleTool extends RectangleBaseTool {
 	
 	public RectangleTool(ToolBox toolbox, ToolName name) {
 		super(toolbox, name);
+	}
+	
+	@Override
+	public void examplePreview(Canvas canvas) {
+		canvas.drawRect(100, 100, 300, 300, toolbox.getPreviewPaint());
 	}
 	
 	@Override

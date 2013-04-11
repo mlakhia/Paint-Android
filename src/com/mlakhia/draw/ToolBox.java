@@ -1,12 +1,13 @@
-package ca.qc.johnabbott.cs603.asg3;
+package com.mlakhia.draw;
 
-import ca.qc.johnabbott.cs603.asg3.tools.CurveTool;
-import ca.qc.johnabbott.cs603.asg3.tools.EllipseTool;
-import ca.qc.johnabbott.cs603.asg3.tools.LineTool;
-import ca.qc.johnabbott.cs603.asg3.tools.PathTool;
-import ca.qc.johnabbott.cs603.asg3.tools.RectangleTool;
-import ca.qc.johnabbott.cs603.asg3.tools.Tool;
-import ca.qc.johnabbott.cs603.asg3.tools.ToolName;
+import com.mlakhia.draw.tools.CurveTool;
+import com.mlakhia.draw.tools.EllipseTool;
+import com.mlakhia.draw.tools.LineTool;
+import com.mlakhia.draw.tools.PathTool;
+import com.mlakhia.draw.tools.RectangleTool;
+import com.mlakhia.draw.tools.Tool;
+import com.mlakhia.draw.tools.ToolName;
+
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;

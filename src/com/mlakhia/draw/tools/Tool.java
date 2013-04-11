@@ -1,6 +1,7 @@
-package ca.qc.johnabbott.cs603.asg3.tools;
+package com.mlakhia.draw.tools;
 
-import ca.qc.johnabbott.cs603.asg3.ToolBox;
+import com.mlakhia.draw.ToolBox;
+
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
@@ -29,6 +30,8 @@ public abstract class Tool {
 	public abstract void touchEnd(MotionEvent event);
 	public abstract void touchMove(MotionEvent event);
 	
-	public abstract void drawPreview(Canvas canvas);
-	public abstract void addToDrawing();
+	public abstract void examplePreview(Canvas canvas); //draws example image
+	
+	public abstract void drawPreview(Canvas canvas); //draws user ontouchdown preview
+	public abstract void addToDrawing(); // adds drawn shape to shapes array
 }

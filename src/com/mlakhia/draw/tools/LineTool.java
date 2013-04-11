@@ -1,18 +1,19 @@
-package ca.qc.johnabbott.cs603.asg3.tools;
+package com.mlakhia.draw.tools;
 
-import ca.qc.johnabbott.cs603.asg3.ToolBox;
-import ca.qc.johnabbott.cs603.asg3.shapes.Line;
-import ca.qc.johnabbott.cs603.asg3.shapes.Rectangle;
+import com.mlakhia.draw.ToolBox;
+import com.mlakhia.draw.shapes.Line;
+
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.util.Log;
-import android.view.MotionEvent;
 
 public class LineTool extends RectangleBaseTool {
 
 	public LineTool(ToolBox toolbox, ToolName name) {
 		super(toolbox, name);
+	}
+
+	@Override
+	public void examplePreview(Canvas canvas) {
+		canvas.drawLine(100, 100, 300, 300, toolbox.getPreviewPaint());
 	}
 
 	@Override

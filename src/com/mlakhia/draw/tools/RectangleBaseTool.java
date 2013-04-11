@@ -1,12 +1,7 @@
-package ca.qc.johnabbott.cs603.asg3.tools;
+package com.mlakhia.draw.tools;
 
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.DashPathEffect;
-import android.graphics.Paint;
+import com.mlakhia.draw.ToolBox;
 import android.view.MotionEvent;
-import ca.qc.johnabbott.cs603.asg3.ToolBox;
-import ca.qc.johnabbott.cs603.asg3.shapes.Rectangle;
 
 public abstract class RectangleBaseTool extends Tool {
 

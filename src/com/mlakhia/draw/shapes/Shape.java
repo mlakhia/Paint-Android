@@ -1,4 +1,4 @@
-package ca.qc.johnabbott.cs603.asg3.shapes;
+package com.mlakhia.draw.shapes;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;

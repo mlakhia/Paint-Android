@@ -1,15 +1,13 @@
-package ca.qc.johnabbott.cs603.asg3.tools;
+package com.mlakhia.draw.tools;
 
-import ca.qc.johnabbott.cs603.asg3.ToolBox;
+import com.mlakhia.draw.ToolBox;
+
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.DashPathEffect;
-import android.graphics.Paint;
 import android.view.MotionEvent;
 
-public class PathTool extends Tool {
+public class CurveTool extends Tool {
 
-	public PathTool(ToolBox toolbox, ToolName name) {
+	public CurveTool(ToolBox toolbox, ToolName name) {
 		super(toolbox, name);
 		// TODO Auto-generated constructor stub
 	}
@@ -17,29 +15,38 @@ public class PathTool extends Tool {
 	@Override
 	public void touchStart(MotionEvent event) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void touchEnd(MotionEvent event) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void touchMove(MotionEvent event) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void drawPreview(Canvas canvas) {
+		
+
+		
 	}
 
 	@Override
 	public void addToDrawing() {
 		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public void examplePreview(Canvas canvas) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
