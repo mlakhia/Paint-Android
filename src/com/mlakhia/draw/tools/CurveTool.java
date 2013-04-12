@@ -4,7 +4,6 @@ import com.mlakhia.draw.MainActivity;
 import com.mlakhia.draw.ToolBox;
 import com.mlakhia.draw.shapes.Curve;
 import com.mlakhia.draw.shapes.Line;
-import com.mlakhia.draw.shapes.Rectangle;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;

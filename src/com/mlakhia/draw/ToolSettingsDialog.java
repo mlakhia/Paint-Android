@@ -4,7 +4,6 @@ import com.mlakhia.draw.tools.ToolName;
 
 import com.mlakhia.draw.R;
 
-import com.mlakhia.draw.shapes.Curve;
 //import com.mlakhia.draw.shapes.PolyGon;
 //import com.mlakhia.draw.shapes.PolyLine;
 import android.app.Dialog;

@@ -1,10 +1,14 @@
 package com.mlakhia.draw.shapes;
 
+import java.io.Serializable;
+
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-public abstract class Shape  {
+public abstract class Shape implements Serializable {
 
+	protected static final long serialVersionUID = 1L;
+	
 	protected int strokeColor;
 	protected int fillColor;
 	protected int strokeWidth;
