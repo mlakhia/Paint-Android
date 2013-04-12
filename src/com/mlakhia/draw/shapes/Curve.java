@@ -1,24 +1,26 @@
 package com.mlakhia.draw.shapes;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Point;
+import android.graphics.Path;
 
 public class Curve extends Shape {
 
-	private List<Point> points = new ArrayList<Point>();
+	private float x1, y1, x2, y2, x3, y3;
 
-	public Curve(List<Point> points, int strokeColor, int strokeWidth) {
-		this(points, strokeColor, strokeWidth, Color.TRANSPARENT);
-	}		
+	public Curve(float x1, float y1, float x2, float y2, float x3, float y3, int strokeColor, int strokeWidth) {
+		this(x1, y1, x2, y2, x3, y3, strokeColor, strokeWidth, Color.TRANSPARENT);
+	}
 	
-	public Curve( List<Point> points, int strokeColor, int strokeWidth, int fillColor) {
+	public Curve(float x1, float y1, float x2, float y2, float x3, float y3, int strokeColor, int strokeWidth, int fillColor) {
 		super(strokeColor, fillColor, strokeWidth);
-		this.points = points;
+		this.x1 = x1;
+		this.y1 = y1;
+		this.x2 = x2;
+		this.y2 = y2;
+		this.x3 = x3;
+		this.y3 = y3;
 	}
 
 	@Override
@@ -31,9 +33,10 @@ public class Curve extends Shape {
 		paint.setStrokeWidth(strokeWidth);
 		paint.setStrokeCap(Paint.Cap.ROUND);
 		
-		for(int i = 0; i < points.size()-1; i++) {
-	        canvas.drawLine(points.get(i).x, points.get(i).y, points.get(i+1).x, points.get(i+1).y, paint);
-	    }		
+		final Path path = new Path();
+		path.moveTo(x1, y1);
+		path.quadTo(x2, y2, x3, y3);
+		canvas.drawPath(path, paint);
 	}
 
 }

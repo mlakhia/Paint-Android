@@ -113,6 +113,10 @@ public class ToolBox {
 	}
 	
 	private void resetExampleDotted(){
+		previewPaint.setStyle(Paint.Style.STROKE);
+		previewPaint.setColor(Color.GRAY);
+		previewPaint.setStrokeWidth(2);
+		previewPaint.setStrokeCap(Paint.Cap.ROUND);
 		previewPaint.setPathEffect(new DashPathEffect(new float[] { 4.0f, 4.0f }, 1.0f));
 	}
 

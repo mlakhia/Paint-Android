@@ -5,6 +5,7 @@ import com.mlakhia.draw.R;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,11 +16,14 @@ public class MainActivity extends Activity {
 	private DrawingView drawing;
 	private Dialog current;
 	
+	public static Context context;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		drawing = (DrawingView)this.findViewById(R.id.drawing_view);
+		MainActivity.context = this;
 	}
 	
 	@Override
