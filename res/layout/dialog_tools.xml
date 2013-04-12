@@ -126,11 +126,27 @@
         </TableRow>
     </TableLayout>
 
-    <Button
-        android:id="@+id/widthDone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Done" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:gravity="center_vertical">
+
+        <ToggleButton
+            android:id="@+id/toggleDotted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:checked="true"
+            android:textOff="Custom Preview"
+            android:textOn="Dotted Preview" />
+
+        <Button
+            android:id="@+id/widthDone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Done" />
+
+    </RelativeLayout>
 
 </LinearLayout>

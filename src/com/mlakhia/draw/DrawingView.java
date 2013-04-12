@@ -23,7 +23,6 @@ public class DrawingView extends View {
 		paint.setAntiAlias(true);
 		
 		toolbox = new ToolBox(this);
-		
 		shapes = new ArrayList<Shape>();
 	}
 
@@ -31,9 +30,8 @@ public class DrawingView extends View {
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 		
-		if(toolbox.getCurrentTool().hasPreview()){
+		if(toolbox.getCurrentTool().hasPreview())
 			toolbox.getCurrentTool().drawPreview(canvas);
-		}
 		
 		for (Shape s : shapes)
 			s.draw(paint, canvas);
@@ -59,7 +57,7 @@ public class DrawingView extends View {
 	}
 	
 	public void erase() {
-		invalidate();
+		shapes = new ArrayList<Shape>();
 	}
 
 	public ArrayList<Shape> getShapes() {

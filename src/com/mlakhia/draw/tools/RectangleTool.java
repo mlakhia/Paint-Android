@@ -4,6 +4,7 @@ import com.mlakhia.draw.ToolBox;
 import com.mlakhia.draw.shapes.Rectangle;
 
 import android.graphics.Canvas;
+import android.graphics.Paint;
 
 public class RectangleTool extends RectangleBaseTool {
 	
@@ -13,12 +14,18 @@ public class RectangleTool extends RectangleBaseTool {
 	
 	@Override
 	public void examplePreview(Canvas canvas) {
-		canvas.drawRect(100, 100, 300, 300, toolbox.getPreviewPaint());
+		Rectangle rect = new Rectangle(50, 50, 350, 350, toolbox.getStrokeColor(), toolbox.getStrokeWidth(), toolbox.getFillColor());
+		rect.draw(new Paint(), canvas);
 	}
 	
 	@Override
 	public void drawPreview(Canvas canvas) {
-		canvas.drawRect(x1, y1, x2, y2, toolbox.getPreviewPaint());
+		if(toolbox.isExampleDotted()){
+			canvas.drawRect(x1, y1, x2, y2, toolbox.getPreviewPaint());
+		}else{
+			Rectangle rect = new Rectangle(x1, y1, x2, y2, toolbox.getStrokeColor(), toolbox.getStrokeWidth());
+			rect.draw(toolbox.getPreviewPaint(), canvas);
+		}
 	}
 
 	@Override

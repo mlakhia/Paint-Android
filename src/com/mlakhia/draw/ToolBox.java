@@ -20,22 +20,30 @@ public class ToolBox {
     private DrawingView drawingView;
     private Paint previewPaint;
     private Tool currentTool;
+    private boolean exampleDotted;
     
     public ToolBox(DrawingView drawingView){
     	this.drawingView = drawingView;
     	
+    	// Set Dash "Preview" Paint
     	previewPaint = new Paint();
     	previewPaint.setStyle(Paint.Style.STROKE);
 		previewPaint.setColor(Color.GRAY);
-		previewPaint.setStrokeWidth(1);
+		previewPaint.setStrokeWidth(2);
 		previewPaint.setStrokeCap(Paint.Cap.ROUND);
 		previewPaint.setPathEffect(new DashPathEffect(new float[] { 4.0f, 4.0f }, 1.0f));
 
-		changeTool(ToolName.LINE); // set default tool to Line tool
+		// Set Default Tool
+		changeTool(ToolName.RECTANGLE);
 		
-		this.fillColor = Color.GRAY;
-		this.strokeColor = Color.DKGRAY;
-		this.strokeWidth = 1;
+		// Set Default Styles
+		fillColor = Color.DKGRAY;
+		strokeColor = Color.GRAY;
+		strokeWidth = 2;
+		
+		// Set Default Example Dotted Stroke
+		// - if false, will draw current stroke settings
+		exampleDotted = true;
     }
 
 	public ToolName getCurrentToolName() {
@@ -99,4 +107,11 @@ public class ToolBox {
 		return drawingView;
 	}
 
+	public boolean isExampleDotted() {
+		return exampleDotted;
+	}
+
+	public void setExampleDotted(boolean exampleDotted) {
+		this.exampleDotted = exampleDotted;
+	}
 }

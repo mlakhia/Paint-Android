@@ -9,6 +9,7 @@ import com.mlakhia.draw.shapes.PolyGon;
 import com.mlakhia.draw.shapes.PolyLine;*/
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -20,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.ToggleButton;
 
 public class ToolSettingsDialog extends Dialog {
 
@@ -36,6 +38,7 @@ public class ToolSettingsDialog extends Dialog {
 	private SeekBar seekBarWidth;
 	private ImageButton buttonStrokeColor;
 	private ImageButton buttonFillColor;
+	private ToggleButton toggleDotted;
 	
 	public ToolSettingsDialog(Context context, ToolBox tbox) {
 		super(context);
@@ -66,6 +69,15 @@ public class ToolSettingsDialog extends Dialog {
 		radioPath = (RadioButton) findViewById(R.id.radioPath);
 		radioPath.setOnClickListener(new ToolClick(ToolName.PATH));
 		
+		toggleDotted = (ToggleButton) findViewById(R.id.toggleDotted);
+		toggleDotted.setChecked(toolbox.isExampleDotted());
+		toggleDotted.setOnClickListener(new View.OnClickListener() {			
+			@Override
+			public void onClick(View v) {
+				toolbox.setExampleDotted(!toolbox.isExampleDotted());
+			}
+		});		
+		
 		// default
 		switch(toolbox.getCurrentToolName()) {
 			case RECTANGLE:
@@ -87,7 +99,7 @@ public class ToolSettingsDialog extends Dialog {
 			@Override
 			public void onProgressChanged(SeekBar seekbar, int progress, boolean fromUser) {
 				toolbox.setStrokeWidth(progress);
-				updatePreview();
+				updateExample();
 			}
 			@Override
 			public void onStartTrackingTouch(SeekBar arg0) {}
@@ -106,7 +118,7 @@ public class ToolSettingsDialog extends Dialog {
 					public void onClick(View view) {
 						toolbox.setStrokeColor(dialog.getColor());
 						buttonStrokeColor.setBackgroundColor(dialog.getColor());
-						updatePreview();
+						updateExample();
 					}
 				});
 				dialog.show();
@@ -125,7 +137,7 @@ public class ToolSettingsDialog extends Dialog {
 					public void onClick(View view) {
 						toolbox.setFillColor(dialog.getColor());
 						buttonFillColor.setBackgroundColor(dialog.getColor());
-						updatePreview();
+						updateExample();
 					}
 				});
 				dialog.show();		
@@ -140,19 +152,24 @@ public class ToolSettingsDialog extends Dialog {
 			}
 		});
 	
-		updatePreview();
+		updateExample();
 		this.show();
 	}
 
-	private void updatePreview() {
+	private void updateExample() {
+		//Create a new image bitmap and attach a brand new canvas to it
 		Bitmap bitmap = Bitmap.createBitmap(400, 400, Bitmap.Config.ARGB_4444);
-		exampleCanvas = new Canvas(bitmap);		
+		exampleCanvas = new Canvas(bitmap);
 		
-		// FIXME needs to draw
+		// Set the background to white
+		bitmap.eraseColor(Color.WHITE);
+		
+		// Draw Example Shape onto Canvas
 		toolbox.getCurrentTool().examplePreview(exampleCanvas);
 
+		//Attach the bitmap which has the canvas attached to the ImageView
 		ImageView image = (ImageView)findViewById(R.id.widthImageView);
-		image.draw(exampleCanvas);
+		image.setImageBitmap(bitmap);
 	}
 	
 	private class ToolClick implements View.OnClickListener {
@@ -164,7 +181,7 @@ public class ToolSettingsDialog extends Dialog {
 		@Override
 		public void onClick(View view) {
 			toolbox.changeTool(name);
-			updatePreview();
+			updateExample();
 		}
 	}
 }

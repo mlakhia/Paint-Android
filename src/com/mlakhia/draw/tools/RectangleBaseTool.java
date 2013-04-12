@@ -5,14 +5,8 @@ import android.view.MotionEvent;
 
 public abstract class RectangleBaseTool extends Tool {
 
-	protected float x1, y1, x2, y2;
-
 	public RectangleBaseTool(ToolBox toolbox, ToolName name) {
 		super(toolbox, name);
-		x1 = 0;
-		x2 = 0;
-		y1 = 0;
-		y2 = 0;
 	}
 
 	@Override
@@ -31,7 +25,7 @@ public abstract class RectangleBaseTool extends Tool {
 		hasPreview = false;
 		addToDrawing();
 
-		toolbox.getDrawingView().erase();
+		toolbox.getDrawingView().invalidate();
 	}
 
 	@Override
@@ -39,7 +33,7 @@ public abstract class RectangleBaseTool extends Tool {
 		x2 = event.getX();
 		y2 = event.getY();
 		
-		toolbox.getDrawingView().erase();
+		toolbox.getDrawingView().invalidate();
 	}
 	
 	/*
