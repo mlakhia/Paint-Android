@@ -108,7 +108,12 @@ public class ToolBox {
 	}
 
 	public boolean isExampleDotted() {
+		resetExampleDotted();
 		return exampleDotted;
+	}
+	
+	private void resetExampleDotted(){
+		previewPaint.setPathEffect(new DashPathEffect(new float[] { 4.0f, 4.0f }, 1.0f));
 	}
 
 	public void setExampleDotted(boolean exampleDotted) {

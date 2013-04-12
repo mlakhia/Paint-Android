@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.mlakhia.draw.ToolBox;
-import com.mlakhia.draw.shapes.Rectangle;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;

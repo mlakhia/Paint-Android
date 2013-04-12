@@ -3,19 +3,19 @@ package com.mlakhia.draw;
 import com.mlakhia.draw.tools.ToolName;
 
 import com.mlakhia.draw.R;
-/*
-import com.mlakhia.draw.shapes.Bezier;
-import com.mlakhia.draw.shapes.PolyGon;
-import com.mlakhia.draw.shapes.PolyLine;*/
+
+import com.mlakhia.draw.shapes.Curve;
+//import com.mlakhia.draw.shapes.PolyGon;
+//import com.mlakhia.draw.shapes.PolyLine;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -71,12 +71,12 @@ public class ToolSettingsDialog extends Dialog {
 		
 		toggleDotted = (ToggleButton) findViewById(R.id.toggleDotted);
 		toggleDotted.setChecked(toolbox.isExampleDotted());
-		toggleDotted.setOnClickListener(new View.OnClickListener() {			
-			@Override
-			public void onClick(View v) {
-				toolbox.setExampleDotted(!toolbox.isExampleDotted());
-			}
-		});		
+		
+		toggleDotted.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+		    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+		    	toolbox.setExampleDotted(isChecked);
+		    }
+		});
 		
 		// default
 		switch(toolbox.getCurrentToolName()) {

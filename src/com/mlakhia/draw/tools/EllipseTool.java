@@ -4,6 +4,7 @@ import com.mlakhia.draw.ToolBox;
 import com.mlakhia.draw.shapes.Ellipse;
 
 import android.graphics.Canvas;
+import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.RectF;
 

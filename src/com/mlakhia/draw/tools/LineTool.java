@@ -2,7 +2,6 @@ package com.mlakhia.draw.tools;
 
 import com.mlakhia.draw.ToolBox;
 import com.mlakhia.draw.shapes.Line;
-import com.mlakhia.draw.shapes.Rectangle;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
