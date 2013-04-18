@@ -9,6 +9,8 @@ import android.graphics.Paint;
 import android.graphics.Point;
 
 public class Path extends Shape {
+	
+	private static final long serialVersionUID = 1L;
 
 	private List<Point> points = new ArrayList<Point>();
 

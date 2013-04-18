@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 
 public class Line extends Shape {
+	
+	private static final long serialVersionUID = 1L;
 
 	private float x1, x2, y1, y2;
 

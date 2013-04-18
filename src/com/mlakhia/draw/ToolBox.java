@@ -20,10 +20,13 @@ public class ToolBox {
     private DrawingView drawingView;
     private Paint previewPaint;
     private Tool currentTool;
+    private Picture picture;
     private boolean exampleDotted;
     
     public ToolBox(DrawingView drawingView){
     	this.drawingView = drawingView;
+    	
+    	picture = new Picture();
     	
     	// Set Dash "Preview" Paint
     	previewPaint = new Paint();
@@ -122,5 +125,9 @@ public class ToolBox {
 
 	public void setExampleDotted(boolean exampleDotted) {
 		this.exampleDotted = exampleDotted;
+	}
+
+	public Picture getPicture() {
+		return picture;
 	}
 }

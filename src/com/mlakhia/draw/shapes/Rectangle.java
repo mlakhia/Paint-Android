@@ -6,6 +6,8 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 
 public class Rectangle extends Shape {
+	
+	private static final long serialVersionUID = 1L;
 
 	private float x1, y1, x2, y2;
 	

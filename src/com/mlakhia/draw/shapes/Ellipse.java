@@ -7,6 +7,8 @@ import android.graphics.RectF;
 import android.graphics.Paint.Style;
 
 public class Ellipse extends Shape {
+	
+	private static final long serialVersionUID = 1L;
 
 	private float x1, y1, x2, y2;
 	

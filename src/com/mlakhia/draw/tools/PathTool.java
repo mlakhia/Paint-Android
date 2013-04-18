@@ -84,7 +84,7 @@ public class PathTool extends Tool {
 	@Override
 	public void addToDrawing() {
 		com.mlakhia.draw.shapes.Path path = new com.mlakhia.draw.shapes.Path(points, toolbox.getStrokeColor(), toolbox.getStrokeWidth(), toolbox.getFillColor());
-		toolbox.getDrawingView().getShapes().add(path);
+		toolbox.getPicture().getShapes().add(path);
 	}
 
 	private ArrayList<Point> getExamplePoints(){

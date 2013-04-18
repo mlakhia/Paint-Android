@@ -44,7 +44,7 @@ public class EllipseTool extends RectangleBaseTool {
 	@Override
 	public void addToDrawing() {
 		Ellipse ellipse = new Ellipse(x1, y1, x2, y2, toolbox.getStrokeColor(), toolbox.getStrokeWidth(), toolbox.getFillColor());
-		toolbox.getDrawingView().getShapes().add(ellipse);
+		toolbox.getPicture().getShapes().add(ellipse);
 	}
 
 }

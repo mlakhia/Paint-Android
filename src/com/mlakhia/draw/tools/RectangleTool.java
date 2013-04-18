@@ -31,7 +31,7 @@ public class RectangleTool extends RectangleBaseTool {
 	@Override
 	public void addToDrawing() {
 		Rectangle rect = new Rectangle(x1, y1, x2, y2, toolbox.getStrokeColor(), toolbox.getStrokeWidth(), toolbox.getFillColor());
-		toolbox.getDrawingView().getShapes().add(rect);
+		toolbox.getPicture().getShapes().add(rect);
 	}
 	
 }

@@ -31,7 +31,7 @@ public class LineTool extends RectangleBaseTool {
 	@Override
 	public void addToDrawing() {
 		Line line = new Line(x1, y1, x2, y2, toolbox.getStrokeColor(), toolbox.getStrokeWidth());
-		toolbox.getDrawingView().getShapes().add(line);
+		toolbox.getPicture().getShapes().add(line);
 	}
 
 }

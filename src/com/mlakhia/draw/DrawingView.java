@@ -15,7 +15,6 @@ public class DrawingView extends View {
 	
 	private Paint paint;
 	private ToolBox toolbox;
-	ArrayList<Shape> shapes;
 	
 	public DrawingView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -23,7 +22,6 @@ public class DrawingView extends View {
 		paint.setAntiAlias(true);
 		
 		toolbox = new ToolBox(this);
-		shapes = new ArrayList<Shape>();
 	}
 
 	@Override
@@ -33,7 +31,7 @@ public class DrawingView extends View {
 		if(toolbox.getCurrentTool().hasPreview())
 			toolbox.getCurrentTool().drawPreview(canvas);
 		
-		for (Shape s : shapes)
+		for (Shape s : toolbox.getPicture().getShapes())
 			s.draw(paint, canvas);
 	}
 
@@ -57,15 +55,16 @@ public class DrawingView extends View {
 	}
 	
 	public void erase() {
-		shapes = new ArrayList<Shape>();
-	}
-
-	public ArrayList<Shape> getShapes() {
-		return shapes;
+		toolbox.getPicture().erase();
 	}
 	
 	public ToolBox getToolBox() {
 		return toolbox;
+	}
+
+// to delete
+	public ArrayList<Shape> getShapes() {
+		return toolbox.getPicture().getShapes();
 	}
 	
 }

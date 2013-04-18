@@ -108,7 +108,7 @@ public class CurveTool extends Tool {
 	@Override
 	public void addToDrawing() {
 		Curve curve = new Curve(x1, y1, x2, y2, x3, y3, toolbox.getStrokeColor(), toolbox.getStrokeWidth(), toolbox.getFillColor());
-		toolbox.getDrawingView().getShapes().add(curve);
+		toolbox.getPicture().getShapes().add(curve);
 	}
 
 }
