@@ -4,13 +4,23 @@ import java.util.ArrayList;
 
 import com.mlakhia.draw.R;
 import com.mlakhia.draw.shapes.Shape;
+import com.slidingmenu.lib.SlidingMenu;
+
+import android.support.v4.app.*;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+//import com.actionbarsherlock.app.ActionBar
+//import com.actionbarsherlock.view.Menu
+//import com.actionbarsherlock.view.MenuItem
+//import com.actionbarsherlock.view.MenuInflater
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.util.Log;
 import android.view.Menu;
@@ -32,6 +42,20 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		drawing = (DrawingView) this.findViewById(R.id.drawing_view);
 		MainActivity.context = this;
+
+		
+        // configure the SlidingMenu
+        SlidingMenu menu = new SlidingMenu(this);
+        menu.setMode(SlidingMenu.LEFT);
+        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+        menu.setShadowWidthRes(R.dimen.shadow_width);
+        menu.setShadowDrawable(R.drawable.shadow);
+        menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+        menu.setFadeDegree(0.35f);
+        menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+        //menu.setMenu(R.layout.menu);
+        
+		
 	}
 
 	@Override
@@ -105,6 +129,16 @@ public class MainActivity extends Activity {
 		// myContext.deleteFile(fileName);
 
 		current.show();
+		
+//		// show LED notification
+//		int LED_NOTIFICATION_ID = 12324234;
+//		NotificationManager nm = ( NotificationManager ) getSystemService( NOTIFICATION_SERVICE );
+//	    Notification notif = new Notification();
+//	    notif.ledARGB = 0xFFff0000;
+//	    notif.flags = Notification.FLAG_SHOW_LIGHTS;
+//	    notif.ledOnMS = 100; 
+//	    notif.ledOffMS = 100; 
+//	    nm.notify(LED_NOTIFICATION_ID, notif);
 	}
 	
 	public void saveShapes(ArrayList<Shape> shapes){
