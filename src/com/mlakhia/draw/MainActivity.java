@@ -2,12 +2,16 @@ package com.mlakhia.draw;
 
 import java.util.ArrayList;
 
+import com.mlakhia.api.GetPictureAsyncTask;
+import com.mlakhia.api.PostPictureAsyncTask;
 import com.mlakhia.draw.R;
 import com.mlakhia.draw.shapes.Shape;
 
+import java.io.FileNotFoundException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.Dialog;
@@ -17,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -78,9 +83,12 @@ public class MainActivity extends Activity {
 		current.setCanceledOnTouchOutside(true);
 
 		Button buttonErase = (Button) current.findViewById(R.id.buttonErase);
-		Button buttonRestore = (Button) current
-				.findViewById(R.id.buttonRestore);
-		Button buttonSave = (Button) current.findViewById(R.id.buttonSave);
+
+		Button buttonLocalRestore = (Button) current.findViewById(R.id.buttonLocalRestore);
+		Button buttonLocalSave = (Button) current.findViewById(R.id.buttonLocalSave);
+		
+		Button buttonServerRestore = (Button) current.findViewById(R.id.buttonServerRestore);
+		Button buttonServerSave = (Button) current.findViewById(R.id.buttonServerSave);
 
 		buttonErase.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -91,23 +99,47 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		buttonSave.setOnClickListener(new View.OnClickListener() {
+		buttonLocalSave.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// serialize and save shapes
-				saveShapes(drawing.getToolBox().getPicture().getShapes());
+				saveLocalShapes(drawing.getToolBox().getPicture().getShapes());
 				current.dismiss();
 			}
 		});
 
-		buttonRestore.setOnClickListener(new View.OnClickListener() {
+		buttonLocalRestore.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				drawing.erase();
 
 				// deserialize and load shapes
-				ArrayList<Shape> shapes = loadSerializedShapes();
+				ArrayList<Shape> shapes = loadLocalSerializedShapes();
+				drawing.getToolBox().getPicture().erase();
 				drawing.getToolBox().getPicture().getShapes().addAll(shapes);
+				
+				drawing.invalidate();
+				current.dismiss();
+			}
+		});
+		
+		buttonServerSave.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {				
+				AsyncTask<String, String, String> saveTask = 
+						new PostPictureAsyncTask(getApplicationContext(), drawing.getToolBox(), "mike", "picture").execute("");
+				
+				current.dismiss();
+			}
+		});
+
+		buttonServerRestore.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				drawing.erase();
+
+				AsyncTask<String, String, String> restoreTask = 
+						new GetPictureAsyncTask(getApplicationContext(), drawing.getToolBox(), "mike", "picture").execute("");
 				
 				drawing.invalidate();
 				current.dismiss();
@@ -117,32 +149,31 @@ public class MainActivity extends Activity {
 		current.show();
 	}
 	
-	public void saveShapes(ArrayList<Shape> shapes){
+	public void saveLocalShapes(ArrayList<Shape> shapes){
 		try {
 			ObjectOutputStream oos = new ObjectOutputStream(openFileOutput(filename, Context.MODE_PRIVATE));
 			oos.writeObject(shapes); // write the class as an 'object'
 			oos.flush(); // flush the stream to insure all of the information was written to 'drawandroid_save.bin'
 			oos.close();// close the stream
 		} catch (Exception e) {
-			Log.v("Serialization Save Error : ", e.getMessage());
+			Log.e("Serialization Write Error : ", e.getMessage());
 			e.printStackTrace();
 		}
    }
-    
+   
    @SuppressWarnings("unchecked")
-   public ArrayList<Shape> loadSerializedShapes() {
-       try
-       {
+   public ArrayList<Shape> loadLocalSerializedShapes() {
+       try {
            ObjectInputStream ois = new ObjectInputStream(openFileInput(filename));
            Object o = ois.readObject();
-           return (ArrayList<Shape>) o;
+           return (o != null) ? (ArrayList<Shape>) o : new ArrayList<Shape>();
+       } catch(FileNotFoundException e){
+    	   Toast.makeText(context, "Nothing to Restore! FileNotFound", Toast.LENGTH_LONG).show();
+       } catch(Exception e) {
+    	   Log.e("Serialization Read Error : ", e.getMessage());
+           e.printStackTrace();
        }
-       catch(Exception ex)
-       {
-    	   Log.v("Serialization Read Error : ",ex.getMessage());
-           ex.printStackTrace();
-       }
-       return null;
+       return new ArrayList<Shape>();
    }
 
 }

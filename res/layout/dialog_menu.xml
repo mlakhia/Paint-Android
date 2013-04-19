@@ -5,16 +5,38 @@
     android:orientation="vertical" >
 
     <Button
-        android:id="@+id/buttonSave"
+        android:id="@+id/buttonLocalSave"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Save" />
+        android:text="Local Save" />
 
     <Button
-        android:id="@+id/buttonRestore"
+        android:id="@+id/buttonLocalRestore"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Restore" />
+        android:text="Local Restore" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:background="#000000" />
+
+    <Button
+        android:id="@+id/buttonServerSave"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Server Save" />
+
+    <Button
+        android:id="@+id/buttonServerRestore"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Server Restore" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:background="#000000" />
 
     <Button
         android:id="@+id/buttonErase"
