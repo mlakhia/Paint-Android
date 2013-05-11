@@ -126,8 +126,8 @@ public class MainActivity extends Activity {
 		buttonServerSave.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {				
-				AsyncTask<String, String, String> saveTask = 
-						new PostPictureAsyncTask(getApplicationContext(), drawing.getToolBox(), "mike", "picture").execute("");
+				//AsyncTask<String, String, String> saveTask = 
+				new PostPictureAsyncTask(getApplicationContext(), drawing.getToolBox(), "mike", "picture").execute("");
 				
 				current.dismiss();
 			}
@@ -138,8 +138,8 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				drawing.erase();
 
-				AsyncTask<String, String, String> restoreTask = 
-						new GetPictureAsyncTask(getApplicationContext(), drawing.getToolBox(), "mike", "picture").execute("");
+				//AsyncTask<String, String, String> restoreTask = 
+				new GetPictureAsyncTask(getApplicationContext(), drawing.getToolBox(), "mike", "picture").execute("");
 				
 				drawing.invalidate();
 				current.dismiss();
