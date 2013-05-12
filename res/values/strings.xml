@@ -1,11 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">DrawAndroid</string>
+    <string name="app_name">Android Paint</string>
+    <string name="title_activity_login">Android Paint - Sign in</string>
+    
+    <string name="list_title">We found these:</string>
+    <string name="list_new">Paint New!</string>
+    
+    
+    <string name="help_title">Help!!</string>
+    <string name="help_text">Type in a username and review the list of saved pictures to load.\n\n 
+        You may skip login, but you will not be able to save to server. \n\n 
+        :) \n\n 
+        -Michael Lakhia \n\n</string>
+    <string name="help_ok">OK</string>
+    
     <string name="menu_tools">Tools</string>
 	<string name="menu_erase">Erase</string>
 	<string name="tools_dialog_title">Configure tool</string>
 	<string name="colour_chooser_dialog_title">Choose color</string>
 	<string name="width_done">Set</string>
-
+	
+    <string name="prompt_username">Username</string>
+    
+    <string name="action_skip">Skip \n<i>(can\'t save)</i></string>
+    <string name="action_sign_in_register"><b>Sign in</b></string>
+    <string name="action_sign_in_short">Sign in</string>
+    
+    <string name="action_help">Help</string>
+    <string name="login_progress_signing_in">Signing in&#8230;</string>
+    <string name="error_field_required">This field is required</string>
+    <!-- 
+    <string name="prompt_password">Password</string>
+    <string name="action_forgot_password">Recover lost password</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+	-->
 </resources>

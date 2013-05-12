@@ -1,6 +1,6 @@
 package com.mlakhia.draw.tools;
 
-import com.mlakhia.draw.MainActivity;
+import com.mlakhia.draw.PaintActivity;
 import com.mlakhia.draw.ToolBox;
 import com.mlakhia.draw.shapes.Curve;
 import com.mlakhia.draw.shapes.Line;
@@ -63,7 +63,7 @@ public class CurveTool extends Tool {
 			x3 = event.getX();
 			y3 = event.getY();
 			first = false; // set bool to use 2nd action
-			Toast.makeText(MainActivity.context, "Touch The Screen Again To Drag Your Control Point.", Toast.LENGTH_LONG).show();
+			Toast.makeText(PaintActivity.context, "Touch The Screen Again To Drag Your Control Point.", Toast.LENGTH_LONG).show();
 		}else{
 			x2 = event.getX();
 			y2 = event.getY();

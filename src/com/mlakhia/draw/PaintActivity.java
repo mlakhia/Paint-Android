@@ -3,6 +3,7 @@ package com.mlakhia.draw;
 import java.util.ArrayList;
 
 import com.mlakhia.api.GetPictureAsyncTask;
+import com.mlakhia.api.ListPicturesAsyncTask;
 import com.mlakhia.api.PostPictureAsyncTask;
 import com.mlakhia.draw.R;
 import com.mlakhia.draw.shapes.Shape;
@@ -11,33 +12,61 @@ import java.io.FileNotFoundException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+public class PaintActivity extends Activity {
 
+	public static Context context;
 	private static final String filename = "drawandroid_save.bin";
 	private DrawingView drawing;
 	private Dialog current;
-
-	public static Context context;
+	private boolean isUserLoggedIn;
+	private String prefUserName;
+	private String pictureLoadName;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		drawing = (DrawingView) this.findViewById(R.id.drawing_view);
-		MainActivity.context = this;
+		PaintActivity.context = this;
 		
+		// Preferences
+		SharedPreferences settings = getSharedPreferences(LoginActivity.USER_PREFS, 0);
+		prefUserName = settings.getString(LoginActivity.USER_NAME_FIELD, "");
+		if(!prefUserName.equalsIgnoreCase("")){
+			isUserLoggedIn = true;
+		}else{			
+			isUserLoggedIn = false;
+		}
+		
+		// Handle Intent for load
+		pictureLoadName = getIntent().getStringExtra("pictureToLoad");
+	}
+	
+	@Override
+	public void onStart(){
+		super.onStart();
+		
+		if(pictureLoadName != null && !pictureLoadName.equalsIgnoreCase("")){
+			new GetPictureAsyncTask(context, drawing.getToolBox(), prefUserName, pictureLoadName).execute("");
+		}
+	}
 		/*
         // configure the SlidingMenu
         SlidingMenu menu = new SlidingMenu(this);
@@ -50,7 +79,7 @@ public class MainActivity extends Activity {
         menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
         //menu.setMenu(R.layout.menu);
         */
-	}
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -89,7 +118,10 @@ public class MainActivity extends Activity {
 		
 		Button buttonServerRestore = (Button) current.findViewById(R.id.buttonServerRestore);
 		Button buttonServerSave = (Button) current.findViewById(R.id.buttonServerSave);
-
+		
+			buttonServerRestore.setVisibility(isUserLoggedIn ? View.VISIBLE : View.GONE);
+			buttonServerSave.setVisibility(isUserLoggedIn ? View.VISIBLE : View.GONE);
+			
 		buttonErase.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -125,11 +157,31 @@ public class MainActivity extends Activity {
 		
 		buttonServerSave.setOnClickListener(new View.OnClickListener() {
 			@Override
-			public void onClick(View v) {				
-				//AsyncTask<String, String, String> saveTask = 
-				new PostPictureAsyncTask(getApplicationContext(), drawing.getToolBox(), "mike", "picture").execute("");
-				
-				current.dismiss();
+			public void onClick(View v) {
+				if(isUserLoggedIn){
+					AlertDialog.Builder alert = new AlertDialog.Builder(v.getContext());
+						alert.setTitle("Enter picture name:");
+	
+					final EditText input = new EditText(alert.getContext());
+					alert.setView(input);
+	
+					alert.setPositiveButton("Save", new OnClickListener() {
+						public void onClick(DialogInterface dialog, int whichButton) {
+							String pictureName = input.getText().toString();
+							new PostPictureAsyncTask(context, drawing.getToolBox(), prefUserName, pictureName).execute("");
+						}
+					});
+					alert.setNegativeButton("Cancel", new OnClickListener() {
+					  public void onClick(DialogInterface dialog, int whichButton) {
+						  dialog.dismiss();
+					  }
+					});
+	
+					alert.show();
+					
+				} else {
+					current.dismiss();
+				}
 			}
 		});
 
@@ -138,8 +190,9 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				drawing.erase();
 
-				//AsyncTask<String, String, String> restoreTask = 
-				new GetPictureAsyncTask(getApplicationContext(), drawing.getToolBox(), "mike", "picture").execute("");
+
+				new ListPicturesAsyncTask(context).execute(prefUserName);
+				//new GetPictureAsyncTask(getApplicationContext(), drawing.getToolBox(), prefUserName, "picture").execute("");
 				
 				drawing.invalidate();
 				current.dismiss();

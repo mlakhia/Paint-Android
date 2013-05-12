@@ -16,6 +16,6 @@ gen/
 local.properties
 
 apk/
-*.apk
 
 *.pdf
+.settings/
